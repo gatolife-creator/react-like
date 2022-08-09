@@ -1,0 +1,19 @@
+body {
+    min-height: 100vh !important;
+}
+
+main {
+    min-height: 100vh !important;
+    margin-top: 100px;
+}
+
+.Article {
+    display: block;
+    width: 90%;
+    /* background-color: gray; */
+    margin: 0 auto;
+}
+
+.Link {
+    cursor: pointer;
+}

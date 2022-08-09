@@ -1,0 +1,1 @@
+const Link=(a,n,s)=>{let t="";return`<a class="${"Link "+(t=s.className||"")}" to=${n}>${a}</a>`};export{Link};

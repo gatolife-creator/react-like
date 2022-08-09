@@ -1,0 +1,1 @@
+const Article=c=>`<article class="Article">${c}</article>`;export{Article};

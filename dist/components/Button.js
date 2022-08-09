@@ -1,0 +1,1 @@
+import{styling}from"../utility/styling.js";const styles=["width: 100px","height: 50px"],Button=(t,n)=>`<button class="btn btn-primary" type="button" style=${styling(styles)} onclick=${n.name}()>${t}</button>`;export{Button};
