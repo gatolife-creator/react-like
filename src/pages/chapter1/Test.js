@@ -3,6 +3,7 @@ import { Footer } from "../../components/Footer.js"
 import { Article } from "../../components/Article.js"
 
 export const Test = () => {
+        document.title = "Test";
         return (
                 /*html*/
                 `

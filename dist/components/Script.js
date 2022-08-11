@@ -1,0 +1,1 @@
+const Script=e=>{const t=document.querySelector("#script"),c=document.createElement("script");c.innerHTML="{"+e+"}",t.appendChild(c)};export{Script};

@@ -33,6 +33,7 @@ const listFiles = (dir) =>
 console.log("build");
 const files = listFiles('src');
 for (const file of files) {
+    if (file === "src/template.html") continue;
     let text = fs.readFileSync(file, "utf-8");
     text = text.replace(/(\s+\<|\<\s+|\t+\<|\<\t+|\n+\<|\<\n+)/g, "<");
     text = text.replace(/(\s+\>|\>\s+|\t+\>|\>\t+|\n+\>|\>\n+)/g, ">");
@@ -41,15 +42,18 @@ for (const file of files) {
 setTimeout(() => {
     console.log("start creating html")
     const pageFiles = listFiles('tmp/src/pages');
+    let templateHTML = fs.readFileSync(__dirname + "/src/template.html", "utf-8");
+    templateHTML = templateHTML.replace(/(\s+\>|\>\s+|\t+\>|\>\t+|\n+\>|\>\n+)/g, ">").replace(/(\s+\<|\<\s+|\t+\<|\<\t+|\n+\<|\<\n+)/g, "<");
+    console.log(templateHTML);
     for (const pageFile of pageFiles) {
         // console.log("pages", pageFile);
-        const slashCount = (pageFile.match(/\//g) || []).length
-        let text = `<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.css"><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js" integrity="sha512-57oZ/vW8ANMjR/KQ6Be9v/+/h6bq9/l3f0Oc7vn6qMqyhvPd1cvKBRWWpzu0QoneImqr2SkmO4MSqU+RpHom3Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><link rel="stylesheet" href="${"../".repeat(slashCount-3)}style.css"><title>Document</title></head><body><div id="app"></div><script type="module" src="${"../".repeat(slashCount-3)}utility/render.js"></script><script type="module" src="${"../".repeat(slashCount-3)}utility/manager.js"></script></body></html>`;
+        const slashCount = (pageFile.match(/\//g) || []).length;
+        let text = templateHTML.replace(/%TEMPLATE%/g, "../".repeat(slashCount - 3));
         let outputPath = pageFile.replace("tmp/src/pages/", "").replace(".js", ".html").toLowerCase();
         createFile(text, __dirname + "/tmp/src/", outputPath);
     }
 }, 1000);
 
 // setTimeout(() => {
-//     fs.rmdir("./tmp");
-// }, 3000);
+//     fs.rmdir("tmp");
+// }, 2000);

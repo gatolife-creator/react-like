@@ -1,5 +1,6 @@
 import { styling } from "../utility/styling.js"
 import { Link } from "./Link.js";
+import { UPPER_PATH } from "../utility/render.js";
 
 const headerStyles = [
     // "position: fixed",
@@ -26,12 +27,12 @@ const navStyles = [
 // }
 
 export const Header = () => {
-    const pathname = location.pathname;
-    console.log(pathname);
+    const pathname = location.pathname.replace(UPPER_PATH, "");
+    console.log("rendered: Header");
     return (
         /*html*/
         `
-                <header style=${styling(headerStyles)})}>
+                <header class="Header" style=${styling(headerStyles)})}>
                     <nav class="navbar navbar-expand-lg bg-light" style=${styling(navStyles)}>
                         <div class="container-fluid">
                             ${Link("Navbar", "/", {className: "navbar-brand"})}
@@ -41,16 +42,16 @@ export const Header = () => {
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li class="nav-item">
-                                ${location.pathname === "/"
-                                ?  Link("Home", "/", {className: "nav-link active"})
-                                :location.pathname === "/index.html"
-                                ?  Link("Home", "/", {className: "nav-link active"})
-                                : Link("Home", "/", {className: "nav-link"})
+                                ${pathname === "/"
+                                ?  Link("Home", "#", {className: "nav-link active"})
+                                :pathname === "/index.html"
+                                ?  Link("Home", "#", {className: "nav-link active"})
+                                :  Link("Home", "/", {className: "nav-link"})
                                 }
                                 </li>
                                 <li class="nav-item">
-                                ${location.pathname === "/about.html"
-                                ?  Link("About", "/about.html", {className: "nav-link active"})
+                                ${pathname === "/about.html"
+                                ?  Link("About", "#", {className: "nav-link active"})
                                 :  Link("About", "/about.html", {className: "nav-link"})
                                 }
                                 </li>
