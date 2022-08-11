@@ -34,10 +34,14 @@ console.log("build");
 const files = listFiles('src');
 for (const file of files) {
     if (file === "src/template.html") continue;
-    let text = fs.readFileSync(file, "utf-8");
-    text = text.replace(/(\s+\<|\<\s+|\t+\<|\<\t+|\n+\<|\<\n+)/g, "<");
-    text = text.replace(/(\s+\>|\>\s+|\t+\>|\>\t+|\n+\>|\>\n+)/g, ">");
-    createFile(text, __dirname + "/tmp/", file);
+    else if (file.match(/.jpeg|.png|.gif/)) {
+        fs.copyFileSync(file, __dirname + "/tmp/" + file);
+    } else {
+        let text = fs.readFileSync(file, "utf-8");
+        text = text.replace(/(\s+\<|\<\s+|\t+\<|\<\t+|\n+\<|\<\n+)/g, "<");
+        text = text.replace(/(\s+\>|\>\s+|\t+\>|\>\t+|\n+\>|\>\n+)/g, ">");
+        createFile(text, __dirname + "/tmp/", file);
+    }
 }
 setTimeout(() => {
     console.log("start creating html")
@@ -46,14 +50,9 @@ setTimeout(() => {
     templateHTML = templateHTML.replace(/(\s+\>|\>\s+|\t+\>|\>\t+|\n+\>|\>\n+)/g, ">").replace(/(\s+\<|\<\s+|\t+\<|\<\t+|\n+\<|\<\n+)/g, "<");
     console.log(templateHTML);
     for (const pageFile of pageFiles) {
-        // console.log("pages", pageFile);
         const slashCount = (pageFile.match(/\//g) || []).length;
         let text = templateHTML.replace(/%TEMPLATE%/g, "../".repeat(slashCount - 3));
         let outputPath = pageFile.replace("tmp/src/pages/", "").replace(".js", ".html").toLowerCase();
         createFile(text, __dirname + "/tmp/src/", outputPath);
     }
 }, 1000);
-
-// setTimeout(() => {
-//     fs.rmdir("tmp");
-// }, 2000);

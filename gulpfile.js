@@ -6,6 +6,7 @@ const { series } = require("gulp");
 const uglify = require("gulp-uglify");
 const cleanCSS = require("gulp-clean-css");
 const cleanHTML = require("gulp-cleanhtml");
+const minifyImages = require("gulp-imagemin");
 
 function cssMinify(done) {
     gulp.src('tmp/src/**/*.css')
@@ -28,4 +29,11 @@ function htmlMinify(done) {
     done();
 }
 
-exports.default = series(cssMinify, htmlMinify, jsMinify);
+function imageMinify(done) {
+    gulp.src('tmp/src/imgs/*')
+        .pipe(minifyImages())
+        .pipe(gulp.dest('dist/imgs'));
+    done();
+}
+
+exports.default = series(cssMinify, htmlMinify, jsMinify, imageMinify);

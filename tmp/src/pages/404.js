@@ -10,6 +10,9 @@ export const ErrorPage = () =>{
                 `<body>${Header()}<main>${Article(
                             /*html*/
                             `<h1>404 Not Found</h1><p>Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home</p>`
-                        )}</main>${Footer()}</body>`
+                        )}
+                        ${Link("Link", "/chapter1/test.html", {className: "btn btn-primary"})}
+                        ${Link("404 Page", "/not-found", {className: "btn btn-primary"})}
+                        ${Link("p5.js", "/p5test.html", {className: "btn btn-primary"})}</main>${Footer()}</body>`
         );
 }

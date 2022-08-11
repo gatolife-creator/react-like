@@ -18,6 +18,9 @@ export const ErrorPage = () => {
                                 <p>Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home Home </p>
                             `
                         )}
+                        ${Link("Link", "/chapter1/test.html", {className: "btn btn-primary"})}
+                        ${Link("404 Page", "/not-found", {className: "btn btn-primary"})}
+                        ${Link("p5.js", "/p5test.html", {className: "btn btn-primary"})}
                     </main>
 
                     ${Footer()}
