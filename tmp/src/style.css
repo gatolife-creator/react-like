@@ -1,3 +1,31 @@
+html {
+    scrollbar-width: normal;
+    scrollbar-color: #777 #555;
+}
+
+html::-webkit-scrollbar {
+    width: 1vw;
+}
+
+html::-webkit-scrollbar-thumb {
+    background-color: #d2b48c55;
+    width: 0.7vw;
+    border-radius: 6px;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+    background-color: #d2b48c;
+}
+
+html::-webkit-scrollbar-track {
+    background-color: #f5deb3;
+    border: 1px inset #f5deb3;
+}
+
+html::-webkit-scrollbar-track:hover {
+    background-color: #f5deb3;
+}
+
 body {
     min-height: 100vh !important;
 }

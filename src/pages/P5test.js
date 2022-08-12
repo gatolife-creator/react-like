@@ -1,8 +1,8 @@
-import { Header } from "../components/Header.js";
-import { Footer } from "../components/Footer.js";
-import { Article } from "../components/Article.js";
-import { Script } from "../components/Script.js";
-import { Link } from "../components/Link.js";
+import { Header } from '../components/Header.js';
+import { Footer } from '../components/Footer.js';
+import { Article } from '../components/Article.js';
+import { Script } from '../components/Script.js';
+import { Link } from '../components/Link.js';
 
 // TODO p5.jsが正常に動作するように改善する。
 // スクリプトがうまく動かない
@@ -15,9 +15,9 @@ export const P5test = () => {
                 ${Article(/*html*/`
                     <div>${new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getSeconds()}</div>
                 `)}
-                ${Link("Link", "/chapter1/test.html", {className: "btn btn-primary"})}
-                ${Link("404 Page", "/not-found", {className: "btn btn-primary"})}
-                ${Link("p5.js", "/p5test.html", {className: "btn btn-primary"})}
+                ${Link('Link', '/chapter1/test.html', {className: 'btn btn-primary'})}
+                ${Link('404 Page', '/not-found', {className: 'btn btn-primary'})}
+                ${Link('p5.js', '/p5test.html', {className: 'btn btn-primary'})}
             </main>
             ${Script(/*javascript*/`
                 console.log("run p5.js")
