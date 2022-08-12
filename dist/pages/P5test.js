@@ -1,8 +1,11 @@
-import{Header}from"../components/Header.js";import{Footer}from"../components/Footer.js";import{Article}from"../components/Article.js";import{Script}from"../components/Script.js";import{Link}from"../components/Link.js";const P5test=()=>`
-            ${Header()}<main>${Article(`<div>${(new Date).getHours()+":"+(new Date).getMinutes()+":"+(new Date).getSeconds()}</div>`)}
+import{Header}from"../components/Header.js";import{Footer}from"../components/Footer.js";import{Article}from"../components/Article.js";import{Script}from"../components/Script.js";import{Link}from"../components/Link.js";import{Floating}from"../components/Floating.js";import{Sidebar}from"../components/Sidebar.js";const P5test=()=>`
+            ${Header()}
+            ${Sidebar()}<main>${Article(`<div>${(new Date).getHours()+":"+(new Date).getMinutes()+":"+(new Date).getSeconds()}</div>`)}
                 ${Link("Link","/chapter1/test.html",{className:"btn btn-primary"})}
                 ${Link("404 Page","/not-found",{className:"btn btn-primary"})}
                 ${Link("p5.js","/p5test.html",{className:"btn btn-primary"})}</main>${Script(`
+                // const canvas = document.getElementById('defaultCanvas0');
+                // if(!canvas) createCanvas(600, 400);
                 console.log("run p5.js")
                 var p1 = new Point(0, 0);
                 var p2 = new Point(100, 200);
@@ -22,5 +25,6 @@ import{Header}from"../components/Header.js";import{Footer}from"../components/Foo
                     tri.getBarycenter().draw();
                 }
             `)}
+            ${Floating("format_list_bulleted",{className:"NavBtn"})}
             ${Footer()}
         `;export{P5test};

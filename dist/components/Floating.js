@@ -1,1 +1,1 @@
-const Floating=a=>`<a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">${a}</i></a>`;export{Floating};
+const Floating=(a,t)=>`<a class="btn-floating btn-large waves-effect waves-light red sidenav-trigger ${t.className}" data-target="slide-out"><i class="material-icons">${a}</i></a>`;export{Floating};

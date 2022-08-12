@@ -19,10 +19,11 @@ $(() =>{
 })
 
 const manage = () =>{
+    $('.sidenav').sidenav();
     $('main').hide().show('fade')
-
-    // リンクをクリックしたら、ページ遷移
+        // リンクをクリックしたら、ページ遷移
     $('.Link').click(function() {
+        $('.sidenav').sidenav('close');
         // もし、パス名がデフォルトの値（＃）でなければレンダリングを行う。
         if ($(this).attr('to') !== '#' && $(this).attr('to') !== location.pathname.replace(UPPER_PATH, '')) {
             render($(this).attr('to'), () =>{
